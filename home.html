@@ -4,16 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modern Web Page</title>
-    <!-- Single call for CSS -->
-    <link rel="stylesheet" href="style.css"> <!-- Link to external CSS file -->
-    <script>
-        function updateDateTime() {
-            const dateTimeElement = document.querySelector('.date-time');
-            const now = new Date();
-            dateTimeElement.textContent = now.toLocaleString();
-        }
-        setInterval(updateDateTime, 1000); // Update date and time every second
-    </script>
+    <!-- Link to external CSS file located at the ond of head -->
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
     <header>
@@ -44,5 +36,13 @@
         <a href="https://facebook.com">Facebook</a>
         <a href="https://example.com">Website</a>
     </footer>
+    <script>
+        function updateDateTime() {
+            const dateTimeElement = document.querySelector('.date-time');
+            const now = new Date();
+            dateTimeElement.textContent = now.toLocaleString();
+        }
+        setInterval(updateDateTime, 1000); // Update date and time every second
+    </script>
 </body>
 </html>
