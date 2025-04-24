@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Design Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+        }
+        header .logo {
+            font-size: 1.5em;
+        }
+        header .project-name {
+            margin-left: 20px;
+            font-size: 1.2em;
+        }
+        header .date-time {
+            font-size: 0.9em;
+        }
+        footer {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            margin-top: auto;
+        }
+        footer a {
+            color: #4CAF50;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+    <script>
+        function updateDateTime() {
+            const dateTimeElement = document.querySelector('.date-time');
+            const now = new Date();
+            dateTimeElement.textContent = now.toLocaleString();
+        }
+        setInterval(updateDateTime, 1000); // Update the date and time every second
+    </script>
+</head>
+<body>
+    <header>
+        <div>
+            <span class="logo">LOGO</span>
+            <span class="project-name">Project Name</span>
+        </div>
+        <div class="date-time"></div>
+    </header>
+    <main>
+        <section>
+            <h1>Section</h1>
+            <h2>Subsection</h2>
+            <p>Content goes here...</p>
+        </section>
+    </main>
+    <footer>
+        <p>Contact us via:</p>
+        <a href="mailto:email@example.com">Email</a>
+        <a href="https://viber.com">Viber</a>
+        <a href="https://facebook.com">Facebook</a>
+        <a href="https://example.com">Website</a>
+    </footer>
+</body>
+</html>
