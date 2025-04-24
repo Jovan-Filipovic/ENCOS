@@ -36,13 +36,7 @@
         <a href="https://facebook.com">Facebook</a>
         <a href="https://example.com">Website</a>
     </footer>
-    <script>
-        function updateDateTime() {
-            const dateTimeElement = document.querySelector('.date-time');
-            const now = new Date();
-            dateTimeElement.textContent = now.toLocaleString();
-        }
-        setInterval(updateDateTime, 1000); // Update date and time every second
-    </script>
+    <!-- Single call for JavaScript at the end of body -->
+    <script src="script.js"></script>   
 </body>
 </html>
