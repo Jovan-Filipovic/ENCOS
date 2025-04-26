@@ -3,26 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Web Page</title>
+    <title>encos v1.0</title>
     <!-- Link to external CSS file located at the ond of head -->
     <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
     <header>
         <div class="top-bar">
-            <span class="logo">LOGO</span>
-            <span class="project-name">
-                ENCOS<br>
-                Online Tools and Library for Mechanical Engineering <br>
-                Home<br>
+            <span class="logo">
+				<img src="images/prokon.png" style="width: 80px; border: 2px solid #333; alt="Example Image";>
+			</span>
+            <span class="project-name" style="text-align: left;">
+                <b>MECHANICAL ENGINEERING ONLINE</b><br>
+                <i>Online Tools and Library for ME</i><br>
+				<marquee behavior="scroll" direction="left">
+					Welcome to EnCoS! | Engineering, Technical Consultig & Supervision Services Online | 
+					Everything you need to finish everyday tasks as mechanical engineer | 
+					Simplify complex engineering problems | Access powerful engineering calculators now!
+				</marquee>
             </span>
             <span class="date-time"></span>
         </div>
         <nav>
-            <ul class="menu">
+            <ul class="menu" style="font-weight:bold;">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#tools">Tools</a></li>
                 <li><a href="#library">Library</a></li>
+				<li><a href="#resources">Resources</a></li>
+				<li><a href="#case">Case Studies</a></li>
                 <li><a href="#help">Help</a></li>
                 <li><a href="#about">About</a></li>
             </ul>
@@ -30,18 +38,22 @@
     </header>
     <main>
         <section>
+		<br>
             <h1>Welcome to the Page</h1>
             <p>Scroll through this content to explore the body area.</p>
             <button class="main-button" onclick="alert('Anastasija je najbolja!')">Click Me</button>
         </section>
     </main>
     <footer>
-        <p>Contact us via:</p>
-        <a href="mailto:office.prokon.so@gmail.com">Email</a>
+        <p>Follow Us</p>
         <a href="https://viber.com">Viber</a>
         <a href="https://facebook.com">Facebook</a>
-        <a href="https://example.com">Website</a>
-		<p>(c) 2025. All rights reserved</p>
+		<a href="https://instagram.com">Instagram</a>
+		<a href="https://example.com">Website</a>
+		<p>Contact Us</p>
+		<a href="mailto:office.prokon.so@gmail.com">info@example.com</a>
+		
+		<p>(c) 2025 ENCOS. All rights reserved.</p>
     </footer>
     <!-- Single call for JavaScript at the end of body -->
     <script src="script.js"></script>   

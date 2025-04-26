@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dropdown Menu</title>
+</head>
+<body>
+
+	<label for="menu"></label>
+    <select id="menu" onchange="navigateToPage(this.value)">
+        <option value="" style="border: none;">Menu</option>
+        <option value="https://www.example.com/page1" style="border: none;">Page 1</option>
+        <option value="https://www.example.com/page2"style="border: none;">Page 2</option>
+        <option value="https://www.example.com/page3"style="border: none;">Page 3</option>
+    </select>
+
+    <label for="tools"></label>
+    <select id="tools" onchange="navigateToPage(this.value)">
+        <option value="" style="border: none;">Tools</option>
+        <option value="https://www.example.com/page1" style="border: none;">Page 1</option>
+        <option value="https://www.example.com/page2"style="border: none;">Page 2</option>
+        <option value="https://www.example.com/page3"style="border: none;">Page 3</option>
+    </select>
+
+    <script>
+        function navigateToPage(url) {
+            if (url) {
+                window.location.href = url;
+            }
+        }
+    </script>
+</body>
+</html>
