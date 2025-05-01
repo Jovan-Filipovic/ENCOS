@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENCOS v2.0</title>
+    <style>
+        @media print {
+            input {
+                display: none; /* Hides the input field in print view */
+            }
+        }
+		
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f0f0f0;
+            padding: 10px 20px;
+            border-bottom: 2px solid #ddd;
+        }
+        .logo {
+            width: 100px;
+            height: auto;
+        }
+        .nav-links {
+            background-color: #e0e0e0;
+            padding: 10px;
+            text-align: center;
+        }
+        .nav-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        .scrollable-area {
+            overflow-y: auto;
+            padding: 20px;
+            height: calc(100vh - 150px);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        .calculate-btns button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+	<script>
+		// <script type = "module" src=script.js">
+		function delete_values() {
+			// delete input values
+			document.getElementById("p_c").value = "0.0";
+			document.getElementById("t_c").value = "0.0";
+			document.getElementById("D_o").value = "0.0";
+			document.getElementById("f").value = "0.0";
+			document.getElementById("z").value = "1.0";
+			document.getElementById("e_n").value = "0.0";
+			document.getElementById("c_0").value = "0.0";
+			document.getElementById("c_1").value = "0.0";
+			document.getElementById("c_2").value = "0.0";
+			// delete room temperature properties
+			document.getElementById("Rm_20").value = "0.0";
+			document.getElementById("ReH_20").value = "0.0";
+			document.getElementById("ReL_20").value = "0.0";
+			document.getElementById("R02_20").value = "0.0";
+			document.getElementById("R1_20").value = "0.0";
+			// delete elevated temperature properties
+			document.getElementById("Rm_t").value = "0.0";
+			document.getElementById("ReH_t").value = "0.0";
+			document.getElementById("ReL_t").value = "0.0";
+			document.getElementById("R02_t").value = "0.0";
+			document.getElementById("R1_t").value = "0.0";
+			// delete results
+			document.getElementById("e_min").value = "0.0";
+			document.getElementById("e_r").value = "0.0";
+			document.getElementById("e_a").value = "0.0";
+			document.getElementById("epsilon").value = "0.0";
+			document.getElementById("p_max").value = "0.0";
+			// Delete Requirements
+			document.getElementById("index_1").value = "";
+			document.getElementById("requirement_1").value = "";
+			document.getElementById("value_1").value = "";
+			document.getElementById("criteria_1").value = "";
+			document.getElementById("comment_1").value = "";
+			
+			document.getElementById("index_2").value = "";
+			document.getElementById("requirement_2").value = "";
+			document.getElementById("value_2").value = "";
+			document.getElementById("criteria_2").value = "";
+			document.getElementById("comment_2").value = "";
+			
+			document.getElementById("index_3").value = "";
+			document.getElementById("requirement_3").value = "";
+			document.getElementById("value_3").value = "";
+			document.getElementById("criteria_3").value = "";
+			document.getElementById("comment_3").value = "";
+			
+			// Delete Notes
+			document.getElementById("note_1").value = "";
+			document.getElementById("note_2").value = "";
+			document.getElementById("note_3").value = "";
+			document.getElementById("note_4").value = "";
+			document.getElementById("note_5").value = "";
+			
+			// Reloads the current page
+			// location.reload();
+			
+			// alert done
+			alert("Delete successfully done!");
+		}
+        
+		function load_example_1() {
+			// set input values
+			document.getElementById("p_c").value = "11.0";
+			document.getElementById("t_c").value = "140.0";
+			document.getElementById("D_o").value = "273.10";
+			document.getElementById("f").value = "135.4";
+			document.getElementById("z").value = "1.0";
+			document.getElementById("e_n").value = "15.09";
+			document.getElementById("c_0").value = "1.0";
+			document.getElementById("c_1").value = "1.59";
+			document.getElementById("c_2").value = "0.0";
+			
+			//set material properties
+			document.getElementById("material").value = "EN P235GH";
+			document.getElementById("Rm_20").value = "360.0";
+			document.getElementById("ReH_20").value = "235.0";
+			document.getElementById("ReL_20").value = "N/A";
+			document.getElementById("R02_20").value = "235.0";
+			document.getElementById("R1_20").value = "N/A";
+			
+			document.getElementById("Rm_t").value = "330.0";
+			document.getElementById("ReH_t").value = "182.0";
+			document.getElementById("ReL_t").value = "N/A";
+			document.getElementById("R02_t").value = "182.0";
+			document.getElementById("R1_t").value = "N/A";
+			
+			// show notification to user
+            alert("Example successfully loaded!");
+        }
+		
+        function calculate_values() {
+			// get variables from html body
+			let p_c = parseFloat(document.getElementById("p_c").value);
+			let D_o = parseFloat(document.getElementById("D_o").value);
+			let f = parseFloat(document.getElementById("f").value);
+			let z = parseFloat(document.getElementById("z").value);
+			let e_n = parseFloat(document.getElementById("e_n").value);
+			let c_0 = parseFloat(document.getElementById("c_0").value);
+			let c_1 = parseFloat(document.getElementById("c_1").value);
+			let c_2 = parseFloat(document.getElementById("c_2").value);
+			
+			// Validate varibles
+			if (p_c * D_o * f * z === 0) {
+				// Notify user that values are not imputed;
+				alert("Values: pc, Do, f, and z not inputed correctly!");
+				// break;
+			} else {
+			
+				let D_i = D_o - 2 * e_n;
+				let e_min = (p_c * D_o)/(2 * f * z + p_c);
+				let e_r = e_min + c_0 + c_1 + c_2;
+				let e_a = e_n - c_0 - c_1 - c_2;
+				let epsilon = e_n - e_min - c_0 - c_1 - c_2;
+				let p_max = (2 * f * z * e_min)/(D_o - e_min);
+				
+				// Check Value
+				// alert("epislon = " + epsilon);
+				
+				// Update values in html body table
+				document.getElementById("e_min").value = e_min.toFixed(3);
+				document.getElementById("e_r").value = e_r.toFixed(3);
+				document.getElementById("e_a").value = e_a.toFixed(3);
+				document.getElementById("epsilon").value = epsilon.toFixed(3);
+				document.getElementById("p_max").value = p_max.toFixed(3);
+				
+				// update conditions
+				let ratio = D_o / (D_o - 2*e_n)
+				document.getElementById("index_1").value = "1";
+				document.getElementById("requirement_1").value = "Do/Di =";
+				document.getElementById("value_1").value = ratio.toFixed(3);
+				document.getElementById("criteria_1").value = "<= 1.7";
+				
+				if (ratio <= 1.7) {
+					document.getElementById("comment_1").value = "Approved";
+				} else {
+					document.getElementById("comment_1").value = "Rejected";
+				}
+				// show user notification
+				alert("Calculation done!");
+			}
+        }
+        
+		function print_preview() {
+            // show notification to user
+			alert("Preview successfully loaded!");
+        }
+	
+        document.addEventListener("DOMContentLoaded", function () {
+            // Set the current date and time
+            document.getElementById("datetime").textContent = new Date().toLocaleString();
+        });
+
+        function printPage() {
+			// Opens the print dialog
+            window.print();
+        }
+		
+		function test_code() {
+			// Access the combo box element
+            const comboBox = document.getElementById("elongation_combo");
+			// Get the currently selected value
+            const selectedValue = comboBox.value;
+			// Display the value (or use it in your program logic)
+			alert("selected value= " + selectedValue);
+		}
+		
+    </script>
+
+    <header>
+        <div>
+            <img src="logo_2.png" alt="Logo" class="logo">
+        </div>
+        <div>
+            <strong>ENCOS v2.0 (c) Freeware</strong><br>
+            Engineering,  Design,  Tehnical Consulting and Supervision<br>
+			<i>free online engineering library and tools</i><br>
+			www.prokon.in.rs
+        </div>
+        <div>
+            <strong>Date:</strong> <span id="datetime"></span><br>
+        </div>
+    </header>
+	
+    <div class="nav-links">
+        <a href="home.html"><b>Home</b></a>
+        <a href="tools.html"><b>Tools</b></a>
+        <a href="#" onclick="printPage()"><b>Preview</b></a>
+		<a href="help.html"><b>Help</b></a>
+        <a href="contact.html"><b>Contact</b></a>
+		<a href="register.html"><b>Register</b></a>
+		<a href="login.html"><b>Login</b></a>
+    </div>
+	
+    <div class="scrollable-area">
+        <h1>
+		PED 2014/68/EU<br></h1>
+		<h2>EN 13480-3: Metallic industrial pipingn<br>
+		Part 3: Design and Calculation</h2>
+		<h3>6.1. Straight Pipes</h3>
+		<div style="background-color: crimson; color: white;">
+			<h3>I. Input section</h3>
+		</div>
+        <table id="input-table" style = "width: 100%;">
+			<colgroup>
+				<col style="width: 20%; text-align: left;">
+				<col style="width: 8%; text-align: right;">
+				<col style="width: 8%; text-align: right;">
+				<col style="width: 8%; text-align: center;">
+				<col style="width: 56%; text-align: left;">
+			</colgroup>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Variable</th>
+                    <th>Value</th>
+                    <th>Unit</th>
+                    <th>Note</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align: right;">calculation pressure (T4.2.3.4): </td>
+                    <td> p<sub>c</sub> = </td>
+                    <td><input type="nummber" value="0.0" id = "p_c" style="width: 100%; border: none; text-align: center;"></td>
+                    <td>bar<sub>G</sub></td>
+                    <td><input type="text" style="width: 100%; border: none;"></td>
+                </tr>
+				<tr>
+                    <td style="text-align: right;">calculation temperature (T4.2.3.4): </td>
+                    <td> t<sub>c</sub> = </td>
+                    <td><input type="nummber" value="0.0" id = "t_c" style="width: 100%; border: none; text-align: center;"></td>
+                    <td><sup>o</sup>C</td>
+                    <td><input type="text" style="width: 100%; border: none;"></td>
+                </tr>
+				<tr>
+                    <td style="text-align: right;">external diameter:</td>
+                    <td> D<sub>o</sub> = </td>
+                    <td><input type="nummber" value="0.0" id="D_o" style="width: 100%; border: none; text-align: center;"></td>
+                    <td>bar<sub>G</sub></td>
+                    <td><input type="text" style="width: 100%; border: none;"></td>
+                </tr>
+				<tr>
+                    <td style="text-align: right;">design stress (T5): </td>
+                    <td> f = </td>
+                    <td><input type="nummber" value="0.0" id="f" style="width: 100%; border: none; text-align: center;"></td>
+					<td>N/mm<sup>2</sup></td>
+                    <td><input type="text" style="width: 100%; border: none;"></td>
+                </tr>
+				<tr>
+                    <td style="text-align: right;">joint coefficient (T4.5): </td>
+                    <td>z</td>
+                    <td><input type="nummber" value="0.0" id="z" style="width: 100%; border: none; text-align: center;"></td>
+                    <td> - </td>
+                    <td><input type="text" style="width: 100%; border: none;"></td>
+                </tr>
+				<tr>
+                    <td style="text-align: right;">nominal thickness (T4.3): </td>
+                    <td> e<sub>n</sub> = </td>
+                    <td><input type="nummber" value="0.0" id="e_n" style="width: 100%; border: none; text-align: center;"></td>
+                    <td> mm </td>
+                    <td><input type="text" style="width: 100%; border: none;"></td>
+                </tr>
+				<tr>
+                    <td style="text-align: right;">corrosion allowance (T4.3): </td>
+                    <td> c<sub>0</sub> = </td>
+                    <td><input type="nummber" value="0.0" id="c_0" style="width: 100%; border: none; text-align: center;"></td>
+                    <td> mm </td>
+                    <td><input type="text" style="width: 100%; border: none;"></td>
+                </tr>
+				<tr>
+                    <td style="text-align: right;">negative tolerance (T4.3): </td>
+                    <td> c<sub>1</sub> = </td>
+                    <td><input type="nummber" value="0.0" id="c_1" style="width: 100%; border: none; text-align: center;"></td>
+                    <td> mm </td>
+                    <td><input type="text" style="width: 100%; border: none;"></td>
+                </tr>
+				<tr>
+                    <td style="text-align: right;">thinning allowance (T4.3): </td>
+                    <td> c<sub>2</sub> = </td>
+                    <td><input type="nummber" value="0.0" id="c_2" style="width: 100%; border: none; text-align: center;"></td>
+                    <td> mm </td>
+                    <td><input type="text" style="width: 100%; border: none;"></td>
+                </tr>
+            </tbody>
+        </table>
+		
+        <div class="calculate-buttons">
+            <button onclick="delete_values()" style="height: 30px; width: 100px; font-size: 18px;"><b>Delete</b></button>
+			<button onclick="load_example_1()" style="height: 30px;  width: 100px; font-size: 18px;"><b>Example</b></button>
+			<button onclick="calculate_values()" style="height: 30px; width: 100px; font-size: 18px;"><b>Calculate</b></button>
+			<button onclick="print_preview()" style="height: 30px; width: 100px; font-size: 18px;"><b>Preview</b></button>
+			<button onclick="test_code()" style="height: 30px; width: 100px; font-size: 18px;"><b>Test</b></button>
+        </div>
+		
+		<div style="background-color: crimson; color: white;">
+			<h3>II. Material properties</h3>
+		</div>
+        <table>
+			<colgroup>
+				<col style="width: 20%; text-align: left;">
+				<col style="width: 8%; text-align: right;">
+				<col style="width: 8%; text-align: right;">
+				<col style="width: 8%; text-align: center;">
+				<col style="width: 56%; text-align: left;">
+			</colgroup>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Variable</th>
+                    <th>Value</th>
+                    <th>Unit</th>
+					<th>Note</th>
+                </tr>
+            </thead>
+            <tbody>
+				
+                <tr>
+                    <td style="text-align: right;">Material (EN13480-2): </td>
+                    <td colspan="3"><input type="text" value="Not selected" id = "material" style="width: 100%; border: none; text-align: center;"></td>
+                    <td><input type="text" style="width: 100%; border: none;"></td>
+                </tr>
+				<tr>
+                    <td>Steel type:</td>
+                    <td> - </td>
+                    <td>
+					<!-- <input type="text" value="1.1" id = "m_group" style="width: 100%; border: none; text-align: center;"> -->
+						<select id="steel_combo" name="options" style="border: none;">	
+							<option value="Non-Austenitic Steel" selected>Non-Austenitic Steel</option>
+							<option value="Austenitic steel">Austenitic steel</option>
+							<option value="Ni and/or Cr alloy steel">Ni and/or Cr alloy steel</option>
+							<option value="Steel Casting">Steel Casting</option>
+						</select>
+					</td>
+                    <td> - </td>
+                    <td><input type="text" style="width: 100%; border: none;"></td>
+                </tr>
+				<tr>
+                    <td>Elongation:</td>
+                    <td> A </td>
+                    <td>
+					<!-- <input type="text" value="1.1" id = "m_group" style="width: 100%; border: none; text-align: center;"> -->
+
+						<select id="elongation_combo" name="options" style="border: none;">	
+							<option value="A < 30%" selected>A < 30%</option>
+							<option value="30% <= A <= 35%">30% <= A <= 35%</option>
+							<option value="A > 35%">A > 35%</option>
+						</select>
+					</td>
+                    <td> - </td>
+                    <td><input type="text" style="width: 100%; border: none;"></td>
+                </tr>
+				<tr>
+                    <td style="text-align: right;">Room properties: </td>
+                    <td> R<sub>m,20</sub> = </td>
+                    <td><input type="nummber" value="0.0" id = "Rm_20" style="width: 100%; border: none; text-align: center;"></td>
+                    <td>N/mm<sup>2</sup></td>
+                    <td><input type="text" style="width: 100%; border: none;"></td>
+                </tr>
+				<tr>
+                    <td style="text-align: right;"> </td>
+                    <td> R<sub>eH,20</sub> = </td>
+                    <td><input type="nummber" value="0.0" id = "ReH_20" style="width: 100%; border: none; text-align: center;"></td>
+                    <td>N/mm<sup>2</sup></td>
+                    <td><input type="text" style="width: 100%; border: none;"></td>
+                </tr>
+				<tr>
+                    <td style="text-align: right;"> </td>
+                    <td> R<Sub>eL,20</sub> = </td>
+                    <td><input type="nummber" value="0.0" id = "ReL_20" style="width: 100%; border: none; text-align: center;"></td>
+                    <td>N/mm<sup>2</sup></td>
+                    <td><input type="text" style="width: 100%; border: none;"></td>
+                </tr>
+				<tr>
+                    <td style="text-align: right;"> </td>
+                    <td> R<sub>0.2,20</sub> = </td>
+                    <td><input type="nummber" value="0.0" id = "R02_20" style="width: 100%; border: none; text-align: center;"></td>
+                    <td>N/mm<sup>2</sup></td>
+                    <td><input type="text" style="width: 100%; border: none;"></td>
+                </tr>
+				<tr>
+                    <td style="text-align: right;"> </td>
+                    <td> R<sub>1.0,20</sub> = </td>
+                    <td><input type="nummber" value="0.0" id = "R1_20" style="width: 100%; border: none; text-align: center;"></td>
+                    <td>N/mm<sup>2</sup></td>
+                    <td><input type="text" style="width: 100%; border: none;"></td>
+                </tr>
+				<tr>
+                    <td style="text-align: right;">Properties at elevated temperature: </td>
+                    <td> R<sub>m,t</sub> = </td>
+                    <td><input type="nummber" value="0.0" id = "Rm_t" style="width: 100%; border: none; text-align: center;"></td>
+                    <td>N/mm<sup>2</sup></td>
+                    <td><input type="text" style="width: 100%; border: none;"></td>
+                </tr>
+				<tr>
+                    <td style="text-align: right;"> </td>
+                    <td> ReH,t = </td>
+                    <td><input type="nummber" value="0.0" id = "ReH_t" style="width: 100%; border: none; text-align: center;"></td>
+                    <td>N/mm<sup>2</sup></td>
+                    <td><input type="text" style="width: 100%; border: none;"></td>
+                </tr>
+				<tr>
+                    <td style="text-align: right;"> </td>
+                    <td> R<sub>eL,t</sub> = </td>
+                    <td><input type="nummber" value="0.0" id = "ReL_t" style="width: 100%; border: none; text-align: center;"></td>
+                    <<td>N/mm<sup>2</sup></td>
+                    <td><input type="text" style="width: 100%; border: none;"></td>
+                </tr>
+				<tr>
+                    <td style="text-align: right;"> </td>
+                    <td> R<sub>0.2,t</sub> = </td>
+                    <td><input type="nummber" value="0.0" id = "R02_t" style="width: 100%; border: none; text-align: center;"></td>
+                    <td>N/mm<sup>2</sup></td>
+                    <td><input type="text" style="width: 100%; border: none;"></td>
+                </tr>
+				<tr>
+                    <td style="text-align: right;"> </td>
+                    <td> R<sub>1.0,t</sub> = </td>
+                    <td><input type="nummber" value="0.0" id = "R1_t" style="width: 100%; border: none; text-align: center;"></td>
+                    <td>N/mm<sup>2</sup></td>
+                    <td><input type="text" style="width: 100%; border: none;"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="background-color: crimson; color: white;">
+			<h3>III. Result</h3>
+		</div>
+		
+        <table>
+			<colgroup>
+				<col style="width: 20%; text-align: left;">
+				<col style="width: 8%; text-align: right;">
+				<col style="width: 8%; text-align: right;">
+				<col style="width: 8%; text-align: center;">
+				<col style="width: 56%; text-align: left;">
+			</colgroup>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Variable</th>
+                    <th>Value</th>
+                    <th>Unit</th>
+					<th>Note</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align: right;">min.required wall thickness (T6.1): </td>
+                    <td> e = </td>
+                    <td><input type="nummber" value="0.0" id = "e_min" style="width: 100%; border: none; text-align: center;"></td>
+                    <td>mm</td>
+                    <td><input type="text" style="width: 100%; border: none;"></td>
+                </tr>
+				<tr>
+                    <td style="text-align: right;">min.required wall thickness with allowances(T6.1): </td>
+                    <td> e<sub>r</sub> = </td>
+                    <td><input type="nummber" value="0.0" id = "e_r" style="width: 100%; border: none; text-align: center;"></td>
+                    <td>mm</td>
+                    <td><input type="text" style="width: 100%; border: none;"></td>
+                </tr>
+				<tr>
+                    <td style="text-align: right;">analisys thickness (F4.3-1): </td>
+                    <td> e<sub>a</sub> = </td>
+                    <td><input type="nummber" value="0.0" id = "e_a" style="width: 100%; border: none; text-align: center;"></td>
+                    <td>mm</td>
+                    <td><input type="text" style="width: 100%; border: none;"></td>
+                </tr>
+				<tr>
+                    <td style="text-align: right;">additional thickness (F4.3-1): </td>
+                    <td> &epsilon; = </td>
+                    <td><input type="nummber" value="0.0" id = "epsilon" style="width: 100%; border: none; text-align: center;"></td>
+                    <td>mm</td>
+                    <td><input type="text" style="width: 100%; border: none;"></td>
+                </tr>
+				<tr>
+                    <td style="text-align: right;">max pressure (T6.1): </td>
+                    <td> P<sub>max</sub> = </td>
+                    <td><input type="nummber" value="0.0" id = "p_max" style="width: 100%; border: none; text-align: center;"></td>
+                    <td>bar<sub>G</sub></td>
+                    <td><input type="text" style="width: 100%; border: none;"></td>
+                </tr>
+            </tbody>
+        </table>
+		<div style="background-color: crimson; color: white;">
+			<h3>IV. Requirements check</h3>
+		</div>
+		
+        <table>
+			<colgroup>
+				<col style="width: 5%;">
+				<col style="width: 30%;">
+				<col style="width: 5%;">
+				<col style="width: 5%;">
+				<col style="width: 55%;">
+			</colgroup>
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Requirement </th>
+                    <th>Value</th>
+					<th>Criteria</th>
+					<th>Compliance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" id="index_1" style="border: none;"></td>
+                    <td><input type="text" id="requirement_1" style="border: none;"></td>
+                    <td><input type="text" id="value_1" style="border: none;"></td>
+                    <td><input type="text" id="criteria_1" style="border: none;"></td>
+					<td><input type="text" id="comment_1" style="border: none;"></td>
+                </tr>
+				<tr>
+                <tr>
+                    <td><input type="text" id="index_2" style="border: none;"></td>
+                    <td><input type="text" id="requirement_2" style="border: none;"></td>
+                    <td><input type="text" id="value_2" style="border: none;"></td>
+                    <td><input type="text" id="criteria_2" style="border: none;"></td>
+					<td><input type="text" id="comment_2" style="border: none;"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" id="index_3" style="border: none;"></td>
+                    <td><input type="text" id="requirement_3" style="border: none;"></td>
+                    <td><input type="text" id="value_3" style="border: none;"></td>
+                    <td><input type="text" id="criteria_3" style="border: none;"></td>
+					<td><input type="text" id="comment_3" style="border: none;"></td>
+                </tr>
+            </tbody>
+        </table>
+		
+        <div style="background-color: crimson; color: white;">
+			<h3>V. Notes</h3>
+		</div>
+		
+        <table>
+			<colgroup>
+				<col style="width: 5%; text-align: left;">
+				<col style="width: 95%; text-align: left;">
+			</colgroup>
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><input id = "note_1" type="text" value="Nominal design stress is not time dependent." style="width: 100%; border: none;"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><input id = "note_2" type="text" value="Calculation is taking into account only normal operating case." style="width: 100%; border: none;"></td>
+                </tr>
+				<tr>
+                    <td>3</td>
+                    <td><input id = "note_3" type="text" value = "" style="width: 100%; border: none;"></td>
+                </tr>
+				<tr>
+                    <td>4</td> 
+                    <td><input id = "note_4" type="text" value= "" style="width: 100%; border: none;"></td>
+                </tr>
+				<tr>
+                    <td>5</td>
+                    <td><input id = "note_5" type="text" value = "" style="width: 100%; border: none;"></td>
+                </tr>
+            </tbody>
+        </table>
+		
+    <h5 style="color: lightgray;"><i>Disclaimer :<br>
+	&nbsp;&nbsp;&nbsp;&nbsp; - The calcualtions and results provided on this web site is for informational and educational purposes only.<br>
+	&nbsp;&nbsp;&nbsp;&nbsp; - While every effort has been made to ensure accuracy of the calculations, no guarantee is made regarding their correctness and applicability.<br>
+	&nbsp;&nbsp;&nbsp;&nbsp; - Users are advised to verify all results independently and consult with a licensed engineer or other qualified professional before making any decisions based on the calculations.<br>
+	&nbsp;&nbsp;&nbsp;&nbsp; - The website and its creators accept no liability for any errors, omissions, or outcomes related to the use of this tool.<br>
+	&nbsp;&nbsp;&nbsp;&nbsp; - This HTML page does not automatically updates to the latest code.<br>
+	</i></h5>
+	</div>	
+</body>
+
+<footer style="background-color: #333; color: #fff; padding: 20px; text-align: center;">
+  <p>© 2025 by yoyoymaji. Freeware</p>
+  <p>Contact: <a href="mailto:office.stacionarna.so@prokon.in.rs" style="color: #00d4ff;">https://www.prokon.in.rs</a></p>
+  <p>
+    Follow us on:
+    <a href="https://www.facebook.com" target="_blank" style="color: #00d4ff;">Facebook</a> |
+    <a href="https://twitter.com" target="_blank" style="color: #00d4ff;">Twitter</a> |
+    <a href="https://instagram.com" target="_blank" style="color: #00d4ff;">Instagram</a>
+  </p>
+  <p><a href="/privacy-policy.html" style="color: #00d4ff;">Privacy Policy</a> | <a href="/terms-of-service.html" style="color: #00d4ff;">Terms of Service</a></p>
+</footer>
+
+</html>

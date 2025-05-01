@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Validation</title>
+    <script>
+        async function validateCredentials() {
+            const usernameInput = document.getElementById("username").value;
+            const passwordInput = document.getElementById("password").value;
+
+            try {
+                const response = await fetch('/resources/credentials.json');
+                if (!response.ok) throw new Error("Failed to load credentials");
+
+                const users = await response.json();
+                const validUser = users.find(user => user.username === usernameInput && user.password === passwordInput);
+
+                if (validUser) {
+                    alert("Login successful! Welcome, " + validUser.username);
+                } else {
+                    alert("Invalid username or password.");
+                }
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="event.preventDefault(); validateCredentials();">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+        <button type="submit">Login</button>
+    </form>
+</body>
+</html>
