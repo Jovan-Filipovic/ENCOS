@@ -21,6 +21,31 @@
     <meta property="og:description" content="Description for social media">
     <meta property="og:image" content="image.jpg">
     <meta property="og:url" content="https://example.com">
+
+	<style>
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            background-color: #333;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+            background-color: #555;
+        }
+        nav ul li a:hover {
+            background-color: #777;
+        }
+    </style>
+
+	
+<!-- JavaScript in the body ensures the HTML content loads first, to avoid blocking of page rendering (HTML content loads first)-->
+<script src="script.js"></script>
 	
 </head>
 <body>
@@ -62,7 +87,7 @@
 				</marquee>
 		</div>
 		
-		<nav>
+	<nav>
             <ul class="menu" style="font-weight:bold;">
                 <li><a href="home.html">Home</a></li>
                 <li><a href="#tools">Tools</a></li>
@@ -73,9 +98,10 @@
                 <li><a href="about.html">About</a></li>
 		<li><a href="register.html">Register</a></li>
 		<li><a href="login.html">Login</a></li>
-		
             </ul>
         </nav>
+   
+
     </header>
     
 	<main>
