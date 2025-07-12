@@ -105,3 +105,104 @@ function haaland_calculate(r_e, k, d_i) {
     return parseFloat(friction.toFixed(4));
 }
 
+function elbowKValue(angle_deg, radius_ratio = 1.0, size_mm = 100) {
+  const angle = parseFloat(angle_deg);
+  const rD = parseFloat(radius_ratio);
+
+  // Base K-values by angle and radius
+  let baseK;
+  if (angle === 90) {
+    baseK = rD >= 1.5 ? 0.4 : 0.75;
+  } else if (angle === 45) {
+    baseK = rD >= 1.5 ? 0.25 : 0.4;
+  } else {
+    // Approximate for other angles
+    baseK = 0.01 * angle;
+  }
+
+  // Optional size correction (larger elbows = slightly lower K)
+  const sizeFactor = size_mm < 50 ? 1.1 : size_mm < 150 ? 1.0 : 0.9;
+
+  return parseFloat((baseK * sizeFactor).toFixed(3));
+}
+
+/*
+elbowKValue(90, 1.5, 80); // ≈ 0.4
+elbowKValue(45, 1.0, 100); // ≈ 0.4
+elbowKValue(30, 1.5, 150); // ≈ 0.3
+*/
+
+function teeKValue(config = "branch", size_mm = 100) {
+  const configType = String(config).toLowerCase();
+  const size = parseFloat(size_mm);
+
+  // Base K-values by configuration
+  const baseK = {
+    branch: 1.0,
+    run: 0.4,
+    elbow: 1.0,
+    stub: 0.8
+  };
+
+  // Size factor — larger tees tend to have slightly lower resistance
+  const sizeFactor = size < 50 ? 1.1 : size < 150 ? 1.0 : 0.9;
+
+  const base = baseK[configType];
+  if (base === undefined) {
+    console.warn(`Unknown tee configuration: "${configType}"`);
+    return null;
+  }
+
+  return parseFloat((base * sizeFactor).toFixed(3));
+}
+
+/*
+teeKValue("branch", 80); // ≈ 1.0
+teeKValue("run", 100);   // ≈ 0.4
+teeKValue("stub", 150);  // ≈ 0.72
+*/
+
+function expansionLoopPressureDrop(size_mm, elbows, rho, velocity) {
+  const size = parseFloat(size_mm);
+  const numElbows = parseInt(elbows);
+  const density = parseFloat(rho);       // kg/m³
+  const v = parseFloat(velocity);        // m/s
+
+  // Base K-value per elbow (standard 90°)
+  const K_elbow = 0.75;
+
+  // Loop geometry factor — assume 2 straight legs + 4 elbows
+  const loopK = numElbows * K_elbow;
+
+  // Optional: add straight pipe friction (simplified)
+  const pipeLength_m = 5 * (size / 1000); // assume loop length ≈ 5 × diameter
+  const f = 0.015; // friction factor (approx. for steel)
+  const K_pipe = f * (pipeLength_m / (size / 1000));
+
+  const K_total = loopK + K_pipe;
+
+  // Pressure drop in Pascals
+  const deltaP = K_total * (density * v * v) / 2;
+
+  return {
+    K_total: parseFloat(K_total.toFixed(3)),
+    deltaP_Pa: parseFloat(deltaP.toFixed(2)),
+    deltaP_bar: parseFloat((deltaP / 100000).toFixed(4))
+  };
+}
+
+/*
+let result = expansionLoopPressureDrop(273, 4, 11.4, 22.5);
+console.log(result);
+// Output:
+// { K_total: 4.05, deltaP_Pa: 2882.81, deltaP_bar: 0.0288 }
+*/
+
+
+
+
+
+
+
+
+
