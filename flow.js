@@ -10,7 +10,7 @@ function message_box(text) {
     alert(text);
 }
 
-function clear_values () {
+function flow_clear_values () {
     // clear load values
     document.getElementById("job_description").value = "(enter the description here)"; 
     document.getElementById("q").value = "0.0";
@@ -32,12 +32,10 @@ function clear_values () {
     document.getElementById("note_6").value = "";
     document.getElementById("note_7").value = "";
     //inform user
-    // alert('Clear values -> done.');
+    alert('Clear values -> done.');
 }
 
-function load_example () {
-    //  clear values
-    clear_values()
+function flow_load_example () {
     // load input values 
     document.getElementById("job_description").value = "steamline piping"; 
     document.getElementById("q").value = "40.0";
@@ -47,7 +45,7 @@ function load_example () {
     // inform user
     alert('Example 1 succesfully loaded.');
 
-function calculate () {
+function flow_calculate () {
     // get inlet values
     var  q = parseFloat(document.getElementById("q").value); 
     var  rho = parseFloat(document.getElementById("rho").value); 
