@@ -99,7 +99,8 @@ function flow_calculate_values () {
 
 function haaland_calculate(r_e, k, d_i) {
     // this function calculates halland friction factor for turbulent flow
-    let term = (k / d_i) / 3.7 + 6.9 / r_e;
+    let roughness = k / d_i;
+    let term = roughness / 3.7 + 6.9 / r_e;
     let friction = 1 / Math.pow(-1.8 * Math.log10(term), 2);
     return parseFloat(friction.toFixed(4));
 }
