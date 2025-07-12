@@ -1,4 +1,4 @@
-asetInterval(updateDateTime, 1000); // Update the date and time every second
+setInterval(updateDateTime, 1000); // Update the date and time every second
 
 function updateDateTime() {
     const dateTimeElement = document.querySelector('.date-time');
@@ -84,7 +84,7 @@ function flow_calculate_values () {
     
     } else if (r_e >= 2000 && r_e <= 4000) {
         document.getElementById("flow").value = "transitional";
-        var friction_transition = (64/r_e + (haaland_calculate(r_e, k, d_i))/2;
+        var friction_transition = (64/r_e + haaland_calculate(r_e, k, d_i))/2;
         document.getElementById("friction_factor").value = friction_transition;
     
     } else {
@@ -94,7 +94,7 @@ function flow_calculate_values () {
     }
 
     // inform user
-    //alert('Calculation done.');
+    document.getElementById("status").textContent = "Calculation complete.";
 }
 
 function haaland_calculate(r_e, k, d_i) {
