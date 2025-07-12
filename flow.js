@@ -23,13 +23,13 @@ function clear_values () {
     document.getElementById("A_i").value = "0.0";
     document.getElementById("w").value = "0.0";
     // clear notes
-    document.getElementById("note_1").value = "";
-    document.getElementById("note_2").value = "";
-    document.getElementById("note_3").value = "";
-    document.getElementById("note_4").value = "";
-    document.getElementById("note_5").value = "";
-    document.getElementById("note_6").value = "";
-    document.getElementById("note_7").value = "";
+    document.getElementById("Note_1").value = "";
+    document.getElementById("Note_2").value = "";
+    document.getElementById("Note_3").value = "";
+    document.getElementById("Note_4").value = "";
+    document.getElementById("Note_5").value = "";
+    document.getElementById("Note_6").value = "";
+    document.getElementById("Note_7").value = "";
     //inform user
     alert('Clear values -> done.');
 }
