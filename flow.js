@@ -12,6 +12,7 @@ function message_box(text) {
 
 function clear_values () {
     // clear load values
+    document.getElementById("project_name").value = ""; 
     document.getElementById("Q").value = "0.0";
     document.getElementById("rho").value = "0.0"; 
     document.getElementById("D_o").value = "0.0"; 
