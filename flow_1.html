@@ -104,11 +104,9 @@
         <th style="width:60% align:left;">Description</th>
         </tr>
 	
-	<!-- 
-		<tr>
-		<td colspan="4" align="left"><b>a. Required capacity</b></td>
-		</tr>
-	-->
+	<tr>
+	<td colspan="4" align="left"><b>a.Velocity calculation</b></td>
+	</tr>
 
 	<tr>
         <td>Q:</td>
@@ -118,7 +116,7 @@
         </tr>
         
 	<tr>
-        <td>&rho:</td>
+        <td>&rho;</td>
         <td><input type="nummber" id="rho" value="0.00" style="border:none text-align:center;"></td>
         <td>kg/m<sup>3</sup></td>
         <td>; Density of fluid</td>
@@ -139,15 +137,8 @@
         </tr>
 	
 	<tr>
-        <td>w:</td>
-        <td><input type="nummber" id="w" value="0.00" style="border:none text-align:center;"></td>
-        <td>m/s</td>
-        <td>; Recommended velocity in pipe</td>
-        </tr>
-	
-	<tr>
         <td></td>
-        <td><input type="nummber" id="comment" value="0.00" style="border:none text-align:center;"></td>
+        <td><input type="nummber" id="comment" value=" " style="border:none text-align:center;"></td>
         <td> -</td>
         <td>; Comment</td>
         </tr>
@@ -164,38 +155,38 @@
         <!-- Results Table section -->
 	<h1>2. Result of calculation</h1>
         <table id= "table-result" style="background=#333;">
-            <tr>
+        <tr>
                 <th style="align:left width:5%;">Variable</th>
                 <th style="width:15%;">Value</th>
                 <th style="width:20%;">Unit</th>
                 <th style="width:60% align:left;">Description</th>
-            </tr>
-            
-		<tr>
+        </tr>
+	<tr>
+                <td>V:</td>
+                <td><input type="nummber" id="V" value="0.0" readonly style="border:none text-align:center;"></td>
+                <td>m<sup>3</sup>/s</td>
+                <td>; Volume flow of fluid</td>
+	</tr>            
+	<tr>
                 <td>D<sub>i</sub>:</td>
-                <td><input type="nummber" id="d_1" value="0.0" readonly style="border:none text-align:center;"></td>
+                <td><input type="nummber" id="D_i" value="0.0" readonly style="border:none text-align:center;"></td>
                 <td>mm</td>
                 <td>; Inside diameter  of pipe</td>
-            </tr>
-		<tr>
+        </tr>
+	<tr>
                 <td>A<sub>i</sub>:</td>
-                <td><input type="nummber" id="d_2" value="0.0" readonly style="border:none text-align:center;"></td>
+                <td><input type="nummber" id="A_i" value="0.0" readonly style="border:none text-align:center;"></td>
                 <td>m<sup>2</sup></td>
                 <td>; Inside area for streaming</td>
-            </tr>
-		<tr>
-                <td>V:</td>
-                <td><input type="nummber" id="d_3" value="0.0" readonly style="border:none text-align:center;"></td>
-                <td>m<sup>3</sup>/min</td>
-                <td>; Volume flow of fluid</td>
-            </tr>
+        </tr>
 		<tr>
                 <td>w =</td>
-                <td><input type="nummber" id="phi" value="0.0" readonly style="border:none text-align:center;"></td>
+                <td><input type="nummber" id="w" value="0.0" readonly style="border:none text-align:center;"></td>
                 <td>m/<sup>2</sup></td>
                 <td>; Velocity of fluid inside pipe</td>
-            </tr>
-        </table>
+        </tr>
+        
+	</table>
 	    
 	<h1>3. Notes</h1>
         <table id= "table-notes" style="background=#333;">
