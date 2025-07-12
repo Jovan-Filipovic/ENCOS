@@ -44,18 +44,19 @@ function flow_load_example () {
     document.getElementById("e_n").value = "10.0";
     // inform user
     alert('Example 1 succesfully loaded.');
+}
 
 function flow_calculate_values () {
     // get inlet values
-    var  q = parseFloat(document.getElementById("q").value); 
-    var  rho = parseFloat(document.getElementById("rho").value); 
-    var  d_o = parseFloat(document.getElementById("d_o").value); 
-    var  e_n = parseFloat(document.getElementById("e_n").value);
+    let  q = parseFloat(document.getElementById("q").value); 
+    let  rho = parseFloat(document.getElementById("rho").value); 
+    let  d_o = parseFloat(document.getElementById("d_o").value); 
+    let  e_n = parseFloat(document.getElementById("e_n").value);
     // calculate values
-    var d_i = d_o - 2*e_n;
-    var a_i = (d_i * d_i*3.141592)/(4*1000000);
-    var v = (q / rho)*(1000/(24*3600));
-    var w = v / a_i;
+    let d_i = d_o - 2*e_n;
+    let a_i = (d_i * d_i*Math.PI)/(4*1000000);
+    let v = (q / rho)*(1000/(24*3600));
+    let w = v / a_i;
     // write values
     document.getElementById("d_i").value = d_i;
     document.getElementById("a_i").value = a_i;
