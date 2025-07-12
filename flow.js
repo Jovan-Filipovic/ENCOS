@@ -36,6 +36,15 @@ function clear_values () {
 }
 
 function load_example () {
+    //  clear values
+    clear_values()
+    // load input values 
+    document.getElementById("job_description").value = "steamline piping"; 
+    document.getElementById("Q").value = "40.0";
+    document.getElementById("rho").value = "11.413"; 
+    document.getElementById("D_o").value = "273.0"; 
+    document.getElementById("e_n").value = "10.0";
+    // inform user 
     alert('load example button activated.');
 }
 
