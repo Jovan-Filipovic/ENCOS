@@ -16,6 +16,7 @@ function flow_clear_values () {
     document.getElementById("q").value = "0.0";
     document.getElementById("rho").value = "0.0";
     document.getElementById("eta").value = "0.0"; 
+    document.getElementById("k").value = "0.0"; 
     document.getElementById("d_o").value = "0.0"; 
     document.getElementById("e_n").value = "0.0"; 
     document.getElementById("comment").value = ""; 
@@ -26,6 +27,7 @@ function flow_clear_values () {
     document.getElementById("w").value = "0.0";
     document.getElementById("r_e").value = "0.0";
     document.getElementById("flow").value = "(none)";
+    document.getElementById("friction_factor").value = "0.0"; 
     // clear notes
     document.getElementById("note_1").value = "";
     document.getElementById("note_2").value = "";
@@ -46,6 +48,7 @@ function flow_load_example () {
     document.getElementById("q").value = "40.0";
     document.getElementById("rho").value = "11.413";
     document.getElementById("eta").value = "0.00000015";
+    document.getElementById("k").value = "0.0045"; 
     document.getElementById("d_o").value = "273.0"; 
     document.getElementById("e_n").value = "10.0";
     // inform user
@@ -56,7 +59,8 @@ function flow_calculate_values () {
     // get inlet values
     var  q = parseFloat(document.getElementById("q").value); 
     var  rho = parseFloat(document.getElementById("rho").value);
-    var  eta = parseFloat(document.getElementById("eta").value); 
+    var  eta = parseFloat(document.getElementById("eta").value);
+    var  k = parseFloat(document.getElementById("k").value);
     var  d_o = parseFloat(document.getElementById("d_o").value); 
     var  e_n = parseFloat(document.getElementById("e_n").value);
     // calculate values
@@ -74,10 +78,18 @@ function flow_calculate_values () {
     //
     if (r_e < 2000) {
         document.getElementById("flow").value = "laminar";
+        var friction_lam = 64/r_e;
+        document.getElementById("friction_factor").value = friction_lam;
     } else if (r_e >= 2000 && r_e <= 4000) {
         document.getElementById("flow").value = "tranmsitional";
+        var friction_1 = 64/r_e;
+        var friction_2 = 0.25/(log10((k/d_i)/3.7+5.74/(r_e**0.9)))**2;
+        friction_factor = (friction_1 + friction_2)/2
+        document.getElementById("friction_factor").value = friction_factor;
     } else {
         document.getElementById("flow").value = "turbulent";
+        var friction_turb = 0.25/(log10((k/d_i)/3.7 + 5.74/(r_e**0.9)))**2;
+        document.getElementById("friction_factor").value = friction_turb;
     }
 
     // inform user
