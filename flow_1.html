@@ -91,7 +91,7 @@
 	<!-- ------------------------------------------------------- -->
 	<!-- This is the tracing of records                          -->
 	<!-- ------------------------------------------------------- -->
-	<span style="display: inline-block; padding: 5px; text-align:center;">Ver. No.: 33</span>
+	<span style="display: inline-block; padding: 5px; text-align:center;">Ver. No.: 34</span>
 	
 	<!-- ------------------------------------------------------- -->
 	<!-- This is the editable section of the main body           -->
@@ -128,6 +128,12 @@
 		        <td><input type="nummber" id="eta" value="0.00" style="border:none text-align:center;"></td>
 		        <td>Pa*s</td>
 		        <td>; Dynamic viscosity of fluid</td>
+	        </tr>
+		<tr>
+		        <td style="text-align: right;">k :=</td>
+		        <td><input type="nummber" id="k" value="0.00" style="border:none text-align:center;"></td>
+		        <td>mm</td>
+		        <td>; Roughness of pipe</td>
 	        </tr>
 		<tr>
 		        <td style="text-align: right;">D<Sub>o</Sub> :=</td>
@@ -202,6 +208,13 @@
 	                <td><input type="text" id="flow" value="" readonly style="border:none text-align:center;"></td>
 	                <td>-</td>
 	                <td>; Type of flow</td>
+	        </tr>
+		</tr>
+			<tr>
+	                <td style="text-align: right;"> </td>
+	                <td><input type="nummber" id="friction_factor" value="0.00" readonly style="border:none text-align:center;"></td>
+	                <td>-</td>
+	                <td>; Friction factor</td>
 	        </tr>
 	</table>
 	    
