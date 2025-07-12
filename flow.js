@@ -47,7 +47,7 @@ function flow_load_example () {
     document.getElementById("job_description").value = "steamline piping"; 
     document.getElementById("q").value = "40.0";
     document.getElementById("rho").value = "11.413";
-    document.getElementById("eta").value = "0.00000015";
+    document.getElementById("eta").value = "0.000015";
     document.getElementById("k").value = "0.0045"; 
     document.getElementById("d_o").value = "273.0"; 
     document.getElementById("e_n").value = "10.0";
