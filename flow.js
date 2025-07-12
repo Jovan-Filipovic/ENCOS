@@ -75,20 +75,22 @@ function flow_calculate_values () {
     document.getElementById("v").value = v.toFixed(5);
     document.getElementById("w").value = w.toFixed(2);
     document.getElementById("r_e").value = r_e.toFixed(0);
-    //
+    // discuss case of re nummber
     if (r_e < 2000) {
         document.getElementById("flow").value = "laminar";
         var friction_lam = 64/r_e;
         document.getElementById("friction_factor").value = friction_lam.toFixed(3);
+    
     } else if (r_e >= 2000 && r_e <= 4000) {
-        document.getElementById("flow").value = "tranmsitional";
+        document.getElementById("flow").value = "transitional";
         var friction_1 = 64/r_e;
-        var friction_2 = 0.25/(log10((k/d_i)/3.7+5.74/(r_e**0.9)))**2;
-        friction_factor = (friction_1 + friction_2)/2
+        var friction_2 = 0.25/(Math.log10((k/d_i)/3.7+5.74/(r_e**0.9)))**2;
+        friction_factor = (friction_1 + friction_2)/2;
         document.getElementById("friction_factor").value = friction_factor.toFixed(3);
+    
     } else {
         document.getElementById("flow").value = "turbulent";
-        var friction_turb = 0.25/(log10((k/d_i)/3.7 + 5.74/(r_e**0.9)))**2;
+        var friction_turb = 0.25/(Math.log10((k/d_i)/3.7 + 5.74/(r_e**0.9)))**2;
         document.getElementById("friction_factor").value = friction_turb.toFixed(3);
     }
 
