@@ -49,13 +49,19 @@ function load_example () {
 
 function calculate () {
     // get inlet values
-    var  q = document.getElementById("q").value; 
-    var  rho = document.getElementById("rho").value; 
-    var  d_o = document.getElementById("d_o").value; 
-    var  e_n = document.getElementById("e_n").value;
-
+    var  q = parseFloat(document.getElementById("q").value); 
+    var  rho = parseFloat(document.getElementById("rho").value); 
+    var  d_o = parseFloat(document.getElementById("d_o").value); 
+    var  e_n = parseFloat(document.getElementById("e_n").value);
+    // calculate values
     var d_i = d_o - 2*e_n;
-        
-    // test code
-    alert(d_i);
+    var a_i = (d_i * d_i*3.141592)/(4000000);
+    var v = (q / rho)*(1000/(24*3600));
+    var w = v / a_i;
+    // write values
+    document.getElementById("d_i").value = d_i;
+    document.getElementById("a_i").value = a_i;
+    document.getElementById("v").value = v;
+    document.getElementById("w").value = w;
+    
 }
