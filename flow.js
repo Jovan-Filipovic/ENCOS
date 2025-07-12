@@ -13,21 +13,21 @@ function message_box(text) {
 function flow_clear_values () {
     // clear load values
     document.getElementById("job_description").value = "(enter the description here)"; 
-    document.getElementById("q").value = "0.0";
-    document.getElementById("rho").value = "0.0";
-    document.getElementById("eta").value = "0.0"; 
-    document.getElementById("k").value = "0.0"; 
-    document.getElementById("d_o").value = "0.0"; 
-    document.getElementById("e_n").value = "0.0"; 
+    document.getElementById("q").value = "0.00";
+    document.getElementById("rho").value = "0.00";
+    document.getElementById("eta").value = "0.000000"; 
+    document.getElementById("k").value = "0.0000"; 
+    document.getElementById("d_o").value = "0.000"; 
+    document.getElementById("e_n").value = "0.000"; 
     document.getElementById("comment").value = ""; 
     //clear calculated values
-    document.getElementById("v").value = "0.0";
-    document.getElementById("d_i").value = "0.0";
-    document.getElementById("a_i").value = "0.0";
-    document.getElementById("w").value = "0.0";
+    document.getElementById("v").value = "0.0000";
+    document.getElementById("d_i").value = "0.000";
+    document.getElementById("a_i").value = "0.00000";
+    document.getElementById("w").value = "0.00";
     document.getElementById("r_e").value = "0.0";
     document.getElementById("flow").value = "(none)";
-    document.getElementById("friction_factor").value = "0.0"; 
+    document.getElementById("friction_factor").value = "0.000"; 
     // clear notes
     document.getElementById("note_1").value = "";
     document.getElementById("note_2").value = "";
