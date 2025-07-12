@@ -61,6 +61,6 @@ function flow_calculate_values () {
     document.getElementById("a_i").value = a_i;
     document.getElementById("v").value = v;
     document.getElementById("w").value = w;
-
+    // inform user
     alert('Calculation done.');
 }
