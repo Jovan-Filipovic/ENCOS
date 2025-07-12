@@ -1,36 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Flow calculator</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+	<!-- --------------------------------------------- -->
+	<!-- This is the header section of the page        -->
+	<!-- --------------------------------------------- -->
+	<meta charset="UTF-8"> <!-- Character encoding -->
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design for different devices -->
+    	<meta name="description" content="Brief description of the page content."> <!-- Description for search engines -->
+	<meta name="keywords" content="HTML, head section, meta tags, SEO"> <!-- Keywords for search engines -->
+    	<meta name="author" content="Jovan.M.Filipovic"> <!-- Author information -->
+	<!-- Open Graph meta tags for social media -->
+   	<meta property="og:title" content="Page Title">
+    	<meta property="og:description" content="Description for social media">
+   	<meta property="og:image" content="image.jpg">
+   	<meta property="og:url" content="https://example.com">
+	
+	<title>Flow calculator</title> <!-- Page title (displayed in the browser tab) -->
+    	<link rel="stylesheet" href="style.css"> <!-- Link to external CSS file located at the end of the head -->
+
+	<!-- load JavaScript in the head to ensure that the HTML content loads first. This avoids blocking of page rendering (HTML content loads first)-->
+	<script src="flow.js"></script>
+	
+	<!-- --------------------------------------------- -->
+	<!-- This is the CSS section of the page           -->
+	<!-- --------------------------------------------- -->
+	
+	h2
+	{
+	text-align: center;
+	}
+	
+</head>	
 
 <body>
-    <!-- Header -->
-    <div class="header">
-        <!-- Logo -->
-        <div class="logo">
-            <img src="logo.png" alt="Logo">
-            <span>ENCOS</span>
-        </div>
-        
-        <!-- Middle content -->
-        <div class="middle">
-            <h1>ENCOS Engineerging Technical Consulting and Supervision</h1>
-            <h2>Online Engineering Tools</h2>
-            <h3>by prokon</h3>
-        </div>
-        
-        <!-- Date and time -->
-        <div class="datetime" id="datetime"></div>
-    </div>
+    	<!-- --------------------------------------------- -->
+	<!-- This is the header section of the page        -->
+	<!-- --------------------------------------------- -->
+<header>
+        	<div class="top-bar">
+		<!-- This is required to have same style in the header --> 
+            	<table style="width: 100%;">
+			<tr>
+				<td style="width: 15% align: left;">
+				<img src="images/prokon.png" style="width: 80px; border: 2px solid #333; alt="Example Image";>
+				</td>
+				<td style="width: 70% align:left;">
+				<b>ENCOS V2.1</b><br>
+				Mechanical Engineering, Equipment Design Calculations, Technical Consulting and Supervision Service<br>
+				<i>Online Engineering Tools and Library</i><br>
+				www.prokon.in.rs
+				</td>
+				<td style="width: 15% text-align:right;">
+				<span class="date-time"></span>
+				</td>
+			</tr>				
+		</table>
+						
+        	</div>
+        	<div class="banner">
+			<marquee behavior="scroll" direction="left">
+			Welcome to EnCoS! | Engineering, Technical Consultig & Supervision Services Online | 
+			Everything you need to finish everyday tasks as mechanical engineer | 
+			Simplify complex engineering problems |
+			Focus on process stationary equipment |
+			Years of experience built in the simple user forms |
+			Access powerful engineering calculators now! |
+			Code comliant and variable consistent way to perform engineering calculations |
+			Click on example to get customised with the input data format |
+			For registered users there is option to save calculation or export it to the file |
+			Unlimited access to all files in modules |
+			Access to the material database and many other resources! |
+			And there is many more were this came from ...
+			</marquee>
+		</div>
+		
+		<nav>
+            		<ul class="menu" style="font-weight:bold;">
+                		<li><a href="home.html">Home</a></li>
+               		 	<li><a href="https://jovan-filipovic.github.io/ENCOS/13480_pipe.html">13480_pipe</a></li>
+               			<li><a href="https://jovan-filipovic.github.io/Torque/torque_1.html">Torque</a></li>
+				<li><a href="https://jovan-filipovic.github.io/ENCOS/flow_1.html">Flow</a></li>
+				<li><a href="about.html">About</a></li>
+				<li><a href="login.html">Login</a></li>
+            		</ul>
+        	</nav>
 
-    <!-- Navigation menu -->
-    <div class="menu">
-        <a onclick="OpenAndClose()">Home</a>
-        <a onclick="alert('This tools provides optional value for volume flow');">About</a>
-    </div>
+		<div class="register" style="text-align: right;">User: Not registered </div>
+
+	</header> 
+<main>
+
+	
 
     <div class="container">
         <!-- First Table -->
@@ -163,27 +224,32 @@
         </tr>
 	</table>
 </div>
-    
+
+</main>
 <!--------- JavaScript -------------->
 <script src="flow.js"></script>
 
+	<!-- --------------------------------------------- -->
+	<!-- This is the end of the editable section       -->
+	<!-- --------------------------------------------- -->
+	
+		<div style="background-color: #333; color: #fff; padding: 20px; text-align: center;">
+		<!-- ---------------------------- -->
+		<!-- This is the footer section   -->
+		<!-- ---------------------------- -->		
+		<p>Follow Us</p>
+	        <a href="https://viber.com">Viber</a>
+	        <a href="https://facebook.com">Facebook</a>
+		<a href="https://instagram.com">Instagram</a>
+		<a href="https://example.com">Website</a>
+		<p>Contact Us</p>
+		<a href="mailto:office.prokon.so@gmail.com">office.prokon.so@gmail.com</a>		
+		<p>(c) 2025 ENCOS. All rights reserved.</p>
+		</div>
+	</main>
+	
+	<footer>
+		<!-- no footer needed -->
+	</footer>
 </body>
-
-<footer>
-    <!-- Footer -->
-	<div class="footer" style="text-align: center; padding: 20px; background-color: #333; color: #fff;">
-    <p>Contact us via:</p>
-    <a href="mailto:office.prokon.so@promonting.in.rs" style="margin: 0 10px; color: #fff;">
-      <i class="fas fa-envelope"></i> Email
-    </a>
-    <a href="viber://chat?number=123456789" style="margin: 0 10px; color: #fff;">
-      <i class="fab fa-viber"></i> Viber
-    </a>
-    <a href="https://facebook.com/example" target="_blank" style="margin: 0 10px; color: #fff;">
-      <i class="fab fa-facebook"></i> Facebook
-    </a>
-    <p>&copy; 2025. All rights reserved.</p>
-  </div>
-</footer>
-
 </html>
