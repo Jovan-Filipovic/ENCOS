@@ -50,15 +50,15 @@ function flow_load_example () {
 
 function flow_calculate_values () {
     // get inlet values
-    let  q = parseFloat(document.getElementById("q").value); 
-    let  rho = parseFloat(document.getElementById("rho").value); 
-    let  d_o = parseFloat(document.getElementById("d_o").value); 
-    let  e_n = parseFloat(document.getElementById("e_n").value);
+    var  q = parseFloat(document.getElementById("q").value); 
+    var  rho = parseFloat(document.getElementById("rho").value); 
+    var  d_o = parseFloat(document.getElementById("d_o").value); 
+    var  e_n = parseFloat(document.getElementById("e_n").value);
     // calculate values
-    let d_i = d_o - 2*e_n;
-    let a_i = (d_i * d_i*Math.PI)/(4*1000000);
-    let v = q / (3.6*rho);
-    let w = v / a_i;
+    var d_i = d_o - 2*e_n;
+    var a_i = (d_i * d_i*Math.PI)/(4*1000000);
+    var v = q / (3.6*rho);
+    var w = v / a_i;
     // write values
     document.getElementById("d_i").value = d_i;
     document.getElementById("a_i").value = a_i;
