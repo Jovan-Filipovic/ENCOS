@@ -79,20 +79,18 @@ function flow_calculate_values () {
     // discuss case of re nummber
     if (r_e < 2000) {
         document.getElementById("flow").value = "laminar";
-        var friction_lam = 64/r_e;
-        document.getElementById("friction_factor").value = friction_lam.toFixed(3);
+        var friction_laminar = 64/r_e;
+        document.getElementById("friction_factor").value = friction_laminar.toFixed(3);
     
     } else if (r_e >= 2000 && r_e <= 4000) {
         document.getElementById("flow").value = "transitional";
-        var friction_1 = 64/r_e;
-        var friction_2 = haaland_calculate(r_e, k, d_i);
-        var friction_factor = (friction_1 + friction_2)/2;
-        document.getElementById("friction_factor").value = friction_factor.toFixed(3);
+        var friction_transition = (64/r_e + (haaland_calculate(r_e, k, d_i))/2;
+        document.getElementById("friction_factor").value = friction_transition.toFixed(3);
     
     } else {
         document.getElementById("flow").value = "turbulent";
-        var friction_turb = haaland_calculate(r_e, k, d_i);
-        document.getElementById("friction_factor").value = friction_turb.toFixed(3);
+        var friction_turbulent = haaland_calculate(r_e, k, d_i);
+        document.getElementById("friction_factor").value = friction_turbulent.toFixed(3);
     }
 
     // inform user
