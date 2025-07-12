@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Flow calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+        <!-- Logo -->
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+            <span>ENCOS</span>
+        </div>
+        
+        <!-- Middle content -->
+        <div class="middle">
+            <h1>ENCOS Engineerging Technical Consulting and Supervision</h1>
+            <h2>Online Engineering Tools</h2>
+            <h3>by prokon</h3>
+        </div>
+        
+        <!-- Date and time -->
+        <div class="datetime" id="datetime"></div>
+    </div>
+
+    <!-- Navigation menu -->
+    <div class="menu">
+        <a onclick="OpenAndClose()">Home</a>
+        <a onclick="alert('This tools provides optional value for volume flow');">About</a>
+    </div>
+
+    <div class="container">
+        <!-- First Table -->
+		
+	<!-- Data for cross line -->
+	<h1>1. Input Data</h1>
+	<table id="table-input" style="background=#333;">
+        
+	<tr>
+        <th style="align:left width:5%;">Variable</th>
+        <th style="width:15%;">Value</th>
+        <th style="width:20%;">Unit</th>
+        <th style="width:60% align:left;">Description</th>
+        </tr>
+	
+	<tr>
+	<td colspan="4" align="left"><b>a. Required capacity</b></td>
+  	</tr>
+
+	<tr>
+        <td>Q:</td>
+        <td><input type="nummber" id="Q" value="0.00" style="border:none text-align:center;"></td>
+        <td>t/dan</td>
+        <td>Mass flow</td>
+        </tr>
+        
+	<tr>
+        <td>Do:</td>
+        <td><input type="nummber" id="Do" value="0.00" style="border:none text-align:center;"></td>
+        <td>mm</td>
+        <td>Outside diameter of pipe</td>
+        </tr>
+        
+	<tr>
+        <td>en:</td>
+        <td><input type="nummber" id="en" value="0.00" style="border:none text-align:center;"></td>
+        <td>mm</td>
+        <td>Pipe nominal thickness</td>
+        </tr>
+	
+	<tr>
+        <td>w:</td>
+        <td><input type="nummber" id="w" value="0.00" style="border:none text-align:center;"></td>
+        <td>m/s</td>
+        <td>Recommended velocity in pipe</td>
+        </tr>
+	
+	<tr>
+        <td></Sub>:</td>
+        <td><input type="nummber" id="D_0" value="0.00" style="border:none text-align:center;"></td>
+        <td> -</td>
+        <td>Comment</td>
+        </tr>
+		
+  </table>
+		
+	<!-- Buttons section -->
+        <div>
+		<button onclick="clear_values()">Clear</button>
+		<button onclick="load_example()">Example</button>
+		<button onclick="calculate()">Calculate</button>
+        </div>
+		
+        <!-- Results Table section -->
+	<h1>2. Result of calculation</h1>
+        <table id= "table-result" style="background=#333;">
+            <tr>
+                <th style="align:left width:5%;">Variable</th>
+                <th style="width:15%;">Value</th>
+                <th style="width:20%;">Unit</th>
+                <th style="width:60% align:left;">Description</th>
+            </tr>
+            
+		<tr>
+                <td>D<sub>i</sub>:</td>
+                <td><input type="nummber" id="d_1" value="0.0" readonly style="border:none text-align:center;"></td>
+                <td>mm</td>
+                <td>Inside diameter  of pipe</td>
+            </tr>
+		<tr>
+                <td>A<sub>i</sub>:</td>
+                <td><input type="nummber" id="d_2" value="0.0" readonly style="border:none text-align:center;"></td>
+                <td>m2</td>
+                <td>Inside area for streaming</td>
+            </tr>
+		<tr>
+                <td>V:</td>
+                <td><input type="nummber" id="d_3" value="0.0" readonly style="border:none text-align:center;"></td>
+                <td>m3/min</td>
+                <td>Volume flow of fluid</td>
+            </tr>
+		<tr>
+                <td>w =</td>
+                <td><input type="nummber" id="phi" value="0.0" readonly style="border:none text-align:center;"></td>
+                <td>m/2</td>
+                <td>Velocity of fluid inside pipe</td>
+            </tr>
+        </table>
+	    
+	<h1>3. Notes</h1>
+        <table id= "table-notes" style="background=#333;">
+        <tr>
+        <th style="align:left width:5%;">No.</th>
+        <th style="width:95%;">Comment</th>
+        </tr>
+	<tr>
+        <td>1.</td>
+        <td><input type="text" id="Note_1" value="Example calculation is only for educational purpose." readonly style="width:100% border:none text-align:center;"></td>	
+        </tr>
+	<tr>
+        <td>2.</td>
+        <td><input type="text" id="Note_2" value="The calculation presented herein is SEP calculation." readonly style="width:100% border:none text-align:center;"></td>	
+        </tr>
+	<tr>
+        <td>3.</td>
+        <td><input type="text" id="Note_3" value="Before any comertial use, consult Senior/Licenced Engineer." readonly style="width:100% border:none text-align:center;"></td>	
+        </tr>
+	<tr>
+        <td>4.</td>
+        <td><input type="text" id="Note_4" value="Friction factor is used for MOLYKOTE 1000." readonly style="width:100% border:none text-align:center;"></td>	
+        </tr>
+        <td>5.</td>
+        <td><input type="text" id="Note_5" value=" " readonly style="width:100% border:none text-align:center;"></td>	
+        </tr>
+        <td>6.</td>
+        <td><input type="text" id="Note_6" value=" " readonly style="width:100% border:none text-align:center;"></td>	
+        </tr>
+        <td>7.</td>
+        <td><input type="text" id="Note_7" value=" " readonly style="width:100% border:none text-align:center;"></td>	
+        </tr>
+	</table>
+</div>
+    
+<!--------- JavaScript -------------->
+<script src="script.js"></script>
+
+</body>
+
+<footer>
+    <!-- Footer -->
+	<div class="footer" style="text-align: center; padding: 20px; background-color: #333; color: #fff;">
+    <p>Contact us via:</p>
+    <a href="mailto:office.prokon.so@promonting.in.rs" style="margin: 0 10px; color: #fff;">
+      <i class="fas fa-envelope"></i> Email
+    </a>
+    <a href="viber://chat?number=123456789" style="margin: 0 10px; color: #fff;">
+      <i class="fab fa-viber"></i> Viber
+    </a>
+    <a href="https://facebook.com/example" target="_blank" style="margin: 0 10px; color: #fff;">
+      <i class="fab fa-facebook"></i> Facebook
+    </a>
+    <p>&copy; 2025. All rights reserved.</p>
+  </div>
+</footer>
+
+</html>
