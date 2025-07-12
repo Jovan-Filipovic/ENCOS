@@ -19,9 +19,6 @@
 	<title>Flow calculator</title> <!-- Page title (displayed in the browser tab) -->
     	<link rel="stylesheet" href="style.css"> <!-- Link to external CSS file located at the end of the head -->
 
-	<!-- load JavaScript in the head to ensure that the HTML content loads first. This avoids blocking of page rendering (HTML content loads first)-->
-	<script src="flow.js"></script>
-	
 	<!-- --------------------------------------------- -->
 	<!-- This is the CSS section of the page           -->
 	<!-- --------------------------------------------- -->
@@ -146,9 +143,9 @@
 		
 	<!-- Buttons section -->
         <div>
-		<button onclick="clear_values()">Clear</button>
-		<button onclick="load_example()">Example</button>
-		<button onclick="calculate()">Calculate</button>
+		<button onclick="flow_clear_values()">Clear</button>
+		<button onclick="flow_load_example()">Example</button>
+		<button onclick="flow_calculate_values()">Calculate</button>
         </div>
 		
         <!-- Results Table section -->
