@@ -32,10 +32,12 @@ function flow_clear_values () {
     document.getElementById("note_6").value = "";
     document.getElementById("note_7").value = "";
     //inform user
-    alert('Clear values -> done.');
+    //alert('Clear values -> done.');
 }
 
 function flow_load_example () {
+    //clear values
+    flow_clear_values()
     // load input values 
     document.getElementById("job_description").value = "steamline piping"; 
     document.getElementById("q").value = "40.0";
@@ -43,7 +45,7 @@ function flow_load_example () {
     document.getElementById("d_o").value = "273.0"; 
     document.getElementById("e_n").value = "10.0";
     // inform user
-    alert('Example 1 succesfully loaded.');
+    //alert('Example 1 succesfully loaded.');
 }
 
 function flow_calculate_values () {
@@ -63,5 +65,5 @@ function flow_calculate_values () {
     document.getElementById("v").value = v;
     document.getElementById("w").value = w;
     // inform user
-    alert('Calculation done.');
+    //alert('Calculation done.');
 }
