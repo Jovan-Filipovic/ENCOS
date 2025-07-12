@@ -14,7 +14,8 @@ function flow_clear_values () {
     // clear load values
     document.getElementById("job_description").value = "(enter the description here)"; 
     document.getElementById("q").value = "0.0";
-    document.getElementById("rho").value = "0.0"; 
+    document.getElementById("rho").value = "0.0";
+    document.getElementById("ni").value = "0.0"; 
     document.getElementById("d_o").value = "0.0"; 
     document.getElementById("e_n").value = "0.0"; 
     document.getElementById("comment").value = ""; 
@@ -41,7 +42,8 @@ function flow_load_example () {
     // load input values 
     document.getElementById("job_description").value = "steamline piping"; 
     document.getElementById("q").value = "40.0";
-    document.getElementById("rho").value = "11.413"; 
+    document.getElementById("rho").value = "11.413";
+    document.getElementById("ni").value = "0.00000015";
     document.getElementById("d_o").value = "273.0"; 
     document.getElementById("e_n").value = "10.0";
     // inform user
@@ -51,7 +53,8 @@ function flow_load_example () {
 function flow_calculate_values () {
     // get inlet values
     var  q = parseFloat(document.getElementById("q").value); 
-    var  rho = parseFloat(document.getElementById("rho").value); 
+    var  rho = parseFloat(document.getElementById("rho").value);
+    var  ni = parseFloat(document.getElementById("ni").value); 
     var  d_o = parseFloat(document.getElementById("d_o").value); 
     var  e_n = parseFloat(document.getElementById("e_n").value);
     // calculate values
@@ -59,11 +62,13 @@ function flow_calculate_values () {
     var a_i = (d_i * d_i*Math.PI)/(4*1000000);
     var v = q / (3.6*rho);
     var w = v / a_i;
+    var r_e = w*(d_i/1000)*rho/ni;
     // write values
     document.getElementById("d_i").value = d_i;
     document.getElementById("a_i").value = a_i;
     document.getElementById("v").value = v;
     document.getElementById("w").value = w;
+    document.getElementById("r_e").value = r_e;
     // inform user
     //alert('Calculation done.');
 }
