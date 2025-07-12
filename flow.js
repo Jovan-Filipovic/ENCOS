@@ -104,5 +104,3 @@ function haaland_calculate(Re, k, d) {
     return parseFloat(friction.toFixed(4));
 }
 
-
-}
