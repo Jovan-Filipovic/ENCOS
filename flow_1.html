@@ -91,7 +91,7 @@
 	<!-- ------------------------------------------------------- -->
 	<!-- This is the tracing of records                          -->
 	<!-- ------------------------------------------------------- -->
-	<span style="display: inline-block; padding: 5px; text-align:center;">Ver. No.: 29</span>
+	<span style="display: inline-block; padding: 5px; text-align:center;">Ver. No.: 30</span>
 	
 	<!-- ------------------------------------------------------- -->
 	<!-- This is the editable section of the main body           -->
@@ -122,6 +122,12 @@
 		        <td><input type="nummber" id="rho" value="0.00" style="border:none text-align:center;"></td>
 		        <td>kg/m<sup>3</sup></td>
 		        <td>; Density of fluid</td>
+	        </tr>
+		<tr>
+		        <td style="text-align: right;">&nu; :=</td>
+		        <td><input type="nummber" id="ni" value="0.00" style="border:none text-align:center;"></td>
+		        <td>m<sup>2</sup>/s</td>
+		        <td>; Kinematic viscosity of fluid</td>
 	        </tr>
 		<tr>
 		        <td style="text-align: right;">D<Sub>o</Sub> :=</td>
@@ -182,6 +188,20 @@
 	                <td><input type="nummber" id="w" value="0.0" readonly style="border:none text-align:center;"></td>
 	                <td>m/s</td>
 	                <td>; Velocity of fluid inside pipe</td>
+	        </tr>
+		</tr>
+			<tr>
+	                <td style="text-align: right;">R<sub>e</sub> :=</td>
+	                <td><input type="nummber" id="r_e" value="0.0" readonly style="border:none text-align:center;"></td>
+	                <td>m/s</td>
+	                <td>; Reynolds nummber</td>
+	        </tr>
+		</tr>
+			<tr>
+	                <td style="text-align: right;">R<sub>e</sub> :=</td>
+	                <td><input type="text" id="flow" value="" readonly style="border:none text-align:center;"></td>
+	                <td>-</td>
+	                <td>; Type pf flow</td>
 	        </tr>
 	</table>
 	    
