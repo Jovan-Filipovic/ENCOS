@@ -44,9 +44,8 @@ function load_example () {
     document.getElementById("rho").value = "11.413"; 
     document.getElementById("d_o").value = "273.0"; 
     document.getElementById("e_n").value = "10.0";
-    // inform user 
-    alert('load example button activated.');
-}
+    // inform user
+    alert('Example 1 succesfully loaded.');
 
 function calculate () {
     // get inlet values
