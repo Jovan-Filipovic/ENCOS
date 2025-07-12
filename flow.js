@@ -1,4 +1,4 @@
-setInterval(updateDateTime, 1000); // Update the date and time every second
+asetInterval(updateDateTime, 1000); // Update the date and time every second
 
 function updateDateTime() {
     const dateTimeElement = document.querySelector('.date-time');
@@ -15,7 +15,7 @@ function flow_clear_values () {
     document.getElementById("job_description").value = "(enter the description here)"; 
     document.getElementById("q").value = "0.0";
     document.getElementById("rho").value = "0.0";
-    document.getElementById("ni").value = "0.0"; 
+    document.getElementById("eta").value = "0.0"; 
     document.getElementById("d_o").value = "0.0"; 
     document.getElementById("e_n").value = "0.0"; 
     document.getElementById("comment").value = ""; 
@@ -45,7 +45,7 @@ function flow_load_example () {
     document.getElementById("job_description").value = "steamline piping"; 
     document.getElementById("q").value = "40.0";
     document.getElementById("rho").value = "11.413";
-    document.getElementById("ni").value = "0.00000015";
+    document.getElementById("eta").value = "0.00000015";
     document.getElementById("d_o").value = "273.0"; 
     document.getElementById("e_n").value = "10.0";
     // inform user
@@ -56,7 +56,7 @@ function flow_calculate_values () {
     // get inlet values
     var  q = parseFloat(document.getElementById("q").value); 
     var  rho = parseFloat(document.getElementById("rho").value);
-    var  ni = parseFloat(document.getElementById("ni").value); 
+    var  eta = parseFloat(document.getElementById("eta").value); 
     var  d_o = parseFloat(document.getElementById("d_o").value); 
     var  e_n = parseFloat(document.getElementById("e_n").value);
     // calculate values
@@ -64,7 +64,7 @@ function flow_calculate_values () {
     var a_i = (d_i * d_i*Math.PI)/(4*1000000);
     var v = q / (3.6*rho);
     var w = v / a_i;
-    var r_e = w*(d_i/1000)*rho/ni;
+    var r_e = w*(d_i/1000)*rho/eta;
     // write values
     document.getElementById("d_i").value = d_i;
     document.getElementById("a_i").value = a_i;
@@ -72,9 +72,9 @@ function flow_calculate_values () {
     document.getElementById("w").value = w;
     document.getElementById("r_e").value = r_e;
     //
-    if (Re < 2000) {
+    if (r_e < 2000) {
         document.getElementById("flow").value = "laminar";
-    } else if (Re >= 2000 && Re <= 4000) {
+    } else if (r_e >= 2000 && r_e <= 4000) {
         document.getElementById("flow").value = "tranmsitional";
     } else {
         document.getElementById("flow").value = "turbulent";
