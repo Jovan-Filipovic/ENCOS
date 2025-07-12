@@ -32,7 +32,7 @@ function clear_values () {
     document.getElementById("note_6").value = "";
     document.getElementById("note_7").value = "";
     //inform user
-    alert('Clear values -> done.');
+    // alert('Clear values -> done.');
 }
 
 function load_example () {
@@ -45,7 +45,7 @@ function load_example () {
     document.getElementById("d_o").value = "273.0"; 
     document.getElementById("e_n").value = "10.0";
     // inform user
-    alert('Example 1 succesfully loaded.');
+    // alert('Example 1 succesfully loaded.');
 
 function calculate () {
     // get inlet values
