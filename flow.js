@@ -69,6 +69,7 @@ function flow_calculate_values () {
     var v = q / (3.6*rho);
     var w = v / a_i;
     var r_e = w*(d_i/1000)*rho/eta;
+    var roughness = k / d_i;
     // write values
     document.getElementById("d_i").value = d_i.toFixed(3);
     document.getElementById("a_i").value = a_i.toFixed(5);
@@ -84,13 +85,13 @@ function flow_calculate_values () {
     } else if (r_e >= 2000 && r_e <= 4000) {
         document.getElementById("flow").value = "transitional";
         var friction_1 = 64/r_e;
-        var friction_2 = 0.25/(Math.log10((k/d_i)/3.7+5.74/(r_e**0.9)))**2;
-        friction_factor = (friction_1 + friction_2)/2;
+        var friction_2 = 0.25 / Math.pow(Math.log10((k / d_i) / 3.7 + 5.74 / Math.pow(r_e, 0.9)),2);
+        var friction_factor = (friction_1 + friction_2)/2;
         document.getElementById("friction_factor").value = friction_factor.toFixed(3);
     
     } else {
         document.getElementById("flow").value = "turbulent";
-        var friction_turb = 0.25/(Math.log10((k/d_i)/3.7 + 5.74/(r_e**0.9)))**2;
+        var friction_turb = 0.25 / Math.pow(Math.log10((k / d_i) / 3.7 + 5.74 / Math.pow(r_e, 0.9)),2);
         document.getElementById("friction_factor").value = friction_turb.toFixed(3);
     }
 
