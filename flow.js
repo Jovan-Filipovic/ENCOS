@@ -45,7 +45,7 @@ function load_example () {
     document.getElementById("d_o").value = "273.0"; 
     document.getElementById("e_n").value = "10.0";
     // inform user
-    // alert('Example 1 succesfully loaded.');
+    alert('Example 1 succesfully loaded.');
 
 function calculate () {
     // get inlet values
@@ -55,7 +55,7 @@ function calculate () {
     var  e_n = parseFloat(document.getElementById("e_n").value);
     // calculate values
     var d_i = d_o - 2*e_n;
-    var a_i = (d_i * d_i*3.141592)/(4000000);
+    var a_i = (d_i * d_i*3.141592)/(4*1000000);
     var v = (q / rho)*(1000/(24*3600));
     var w = v / a_i;
     // write values
@@ -63,5 +63,6 @@ function calculate () {
     document.getElementById("a_i").value = a_i;
     document.getElementById("v").value = v;
     document.getElementById("w").value = w;
-    
+
+    alert('Calculation done.');
 }
