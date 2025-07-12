@@ -85,16 +85,26 @@ function flow_calculate_values () {
     } else if (r_e >= 2000 && r_e <= 4000) {
         document.getElementById("flow").value = "transitional";
         var friction_1 = 64/r_e;
-        var friction_2 = 0.25 / Math.pow(Math.log10((k / d_i) / 3.7 + 5.74 / Math.pow(r_e, 0.9)),2);
+        var friction_2 = haaland_calculate(r_e, k, d_i);
         var friction_factor = (friction_1 + friction_2)/2;
         document.getElementById("friction_factor").value = friction_factor.toFixed(3);
     
     } else {
         document.getElementById("flow").value = "turbulent";
-        var friction_turb = 0.25 / Math.pow(Math.log10((k / d_i) / 3.7 + 5.74 / Math.pow(r_e, 0.9)),2);
+        var friction_turb = haaland_calculate(r_e, k, d_i);
         document.getElementById("friction_factor").value = friction_turb.toFixed(3);
     }
 
     // inform user
     //alert('Calculation done.');
+}
+
+function haaland_calculate(Re, k, d) {
+    // this function calculates halland friction factor for turbulent flow
+    let term = (k / d) / 3.7 + 6.9 / Re;
+    let friction = 1 / Math.pow(-1.8 * Math.log10(term), 2);
+    return parseFloat(friction.toFixed(4));
+}
+
+
 }
