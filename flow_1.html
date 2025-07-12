@@ -92,61 +92,57 @@
 	<br>
 	<br>
 
+	<!-- ------------------------------------------------------- -->
+	<!-- This is the editable section of the main body           -->
+	<!-- ------------------------------------------------------- -->
+	
    	<div class="container">
 	<span style="display: inline-block; padding: 5px;">Job description: </span>
 	<input type="text" id="job_description" value="(enter description here)" style="border:none width:100% text-align:left;">
 	
 	<!-- Data for cross line -->
 	<h1>1. Input Data</h1>
+	
 	<table id="table-input" style="background=#333;">       
-	
-	<tr>
-        <th style="align:left width:5%;">Variable</th>
-        <th style="width:15%;">Value</th>
-        <th style="width:20%;">Unit</th>
-        <th style="width:60% align:left;">Description</th>
-        </tr>
-	
-	<tr>
-	<td colspan="4" align="left"><b>a.Velocity calculation</b></td>
-	</tr>
-	
-	<tr>
-        <td style="text-align: right;">Q :=</td>
-        <td><input type="nummber" id="q" value="0.00" style="border:none text-align:center;"></td>
-        <td>t/dan</td>
-        <td>; Mass flow of fluid</td>
-        </tr>
-        
-	<tr>
-        <td style="text-align: right;">&rho; :=</td>
-        <td><input type="nummber" id="rho" value="0.00" style="border:none text-align:center;"></td>
-        <td>kg/m<sup>3</sup></td>
-        <td>; Density of fluid</td>
-        </tr>
-	
-	<tr>
-        <td style="text-align: right;">D<Sub>o</Sub> :=</td>
-        <td><input type="nummber" id="d_o" value="0.00" style="border:none text-align:center;"></td>
-        <td>mm</td>
-        <td>; Outside diameter of pipe</td>
-        </tr>
-        
-	<tr>
-        <td style="text-align: right;">e<sub>n</sub> :=</td>
-        <td><input type="nummber" id="e_n" value="0.00" style="border:none text-align:center;"></td>
-        <td>mm</td>
-        <td>; Pipe nominal thickness</td>
-        </tr>
-	
-	<tr>
-        <td></td>
-        <td><input type="text" id="comment" value=" " style="border:none text-align:center;"></td>
-        <td> -</td>
-        <td>; Comment</td>
-        </tr>
-		
-  </table>
+		<tr>
+		        <th style="align:left width:5%;">Variable</th>
+		        <th style="width:15%;">Value</th>
+		        <th style="width:20%;">Unit</th>
+		        <th style="width:60% align:left;">Description</th>
+	        </tr>
+		<tr>
+			<td colspan="4" align="left"><b>a.Velocity calculation</b></td>
+		</tr>
+		<tr>
+		        <td style="text-align: right;">Q :=</td>
+		        <td><input type="nummber" id="q" value="0.00" style="border:none text-align:center;"></td>
+		        <td>t/dan</td>
+		        <td>; Mass flow of fluid</td>
+	        </tr>
+		<tr>
+		        <td style="text-align: right;">&rho; :=</td>
+		        <td><input type="nummber" id="rho" value="0.00" style="border:none text-align:center;"></td>
+		        <td>kg/m<sup>3</sup></td>
+		        <td>; Density of fluid</td>
+	        </tr>
+		<tr>
+		        <td style="text-align: right;">D<Sub>o</Sub> :=</td>
+		        <td><input type="nummber" id="d_o" value="0.00" style="border:none text-align:center;"></td>
+		        <td>mm</td>
+		        <td>; Outside diameter of pipe</td>
+	        </tr>
+		<tr>
+		        <td style="text-align: right;">e<sub>n</sub> :=</td>
+		        <td><input type="nummber" id="e_n" value="0.00" style="border:none text-align:center;"></td>
+		        <td>mm</td>
+		        <td>; Pipe nominal thickness</td>
+		<tr>
+	        	<td> </td>
+	        	<td><input type="text" id="comment" value=" " style="border:none text-align:center;"></td>
+	        	<td> -</td>
+	        	<td>; Comment</td>
+	        </tr>
+	</table>
 		
 	<!-- Buttons section -->
         <div>
@@ -157,71 +153,71 @@
 		
         <!-- Results Table section -->
 	<h1>2. Result of calculation</h1>
-        <table id= "table-result" style="background=#333;">
-        <tr>
-                <th style="align:left width:5%;">Variable</th>
-                <th style="width:15%;">Value</th>
-                <th style="width:20%;">Unit</th>
-                <th style="width:60% align:left;">Description</th>
-        </tr>
-	<tr>
-                <td style="text-align: right;">V :=</td>
-                <td><input type="nummber" id="v" value="0.0" readonly style="border:none text-align:center;"></td>
-                <td>m<sup>3</sup>/s</td>
-                <td>; Volume flow of fluid</td>
-	</tr>            
-	<tr>
-                <td style="text-align: right;">D<sub>i</sub> :=</td>
-                <td><input type="nummber" id="d_i" value="0.0" readonly style="border:none text-align:center;"></td>
-                <td>mm</td>
-                <td>; Inside diameter  of pipe</td>
-        </tr>
-	<tr>
-                <td style="text-align: right;">A<sub>i</sub> :=</td>
-                <td><input type="nummber" id="a_i" value="0.0" readonly style="border:none text-align:center;"></td>
-                <td>m<sup>2</sup></td>
-                <td>; Inside area for streaming</td>
-        </tr>
-		<tr>
-                <td style="text-align: right;">w :=</td>
-                <td><input type="nummber" id="w" value="0.0" readonly style="border:none text-align:center;"></td>
-                <td>m<sup>2</sup>/s</td>
-                <td>; Velocity of fluid inside pipe</td>
-        </tr>
         
+	<table id= "table-result" style="background=#333;">
+	        <tr>
+	                <th style="align:left width:5%;">Variable</th>
+	                <th style="width:15%;">Value</th>
+	                <th style="width:20%;">Unit</th>
+	                <th style="width:60% align:left;">Description</th>
+	        </tr>
+		<tr>
+	                <td style="text-align: right;">V :=</td>
+	                <td><input type="nummber" id="v" value="0.0" readonly style="border:none text-align:center;"></td>
+	                <td>m<sup>3</sup>/s</td>
+	                <td>; Volume flow of fluid</td>
+		</tr>            
+		<tr>
+	                <td style="text-align: right;">D<sub>i</sub> :=</td>
+	                <td><input type="nummber" id="d_i" value="0.0" readonly style="border:none text-align:center;"></td>
+	                <td>mm</td>
+	                <td>; Inside diameter  of pipe</td>
+	        </tr>
+		<tr>
+	                <td style="text-align: right;">A<sub>i</sub> :=</td>
+	                <td><input type="nummber" id="a_i" value="0.0" readonly style="border:none text-align:center;"></td>
+	                <td>m<sup>2</sup></td>
+	                <td>; Inside area for streaming</td>
+	        </tr>
+			<tr>
+	                <td style="text-align: right;">w :=</td>
+	                <td><input type="nummber" id="w" value="0.0" readonly style="border:none text-align:center;"></td>
+	                <td>m<sup>2</sup>/s</td>
+	                <td>; Velocity of fluid inside pipe</td>
+	        </tr>
 	</table>
 	    
 	<h1>3. Notes</h1>
         <table id= "table-notes" style="background=#333;">
-        <tr>
-        <th style="align:left width:5%;">No.</th>
-        <th style="width:95%;">Comment</th>
-        </tr>
-	<tr>
-        <td>1.</td>
-        <td><input type="text" id="note_1" value="Example calculation is only for educational purpose." readonly style="width:100% border:none text-align:center;"></td>	
-        </tr>
-	<tr>
-        <td>2.</td>
-        <td><input type="text" id="note_2" value="The calculation presented herein is SEP calculation." readonly style="width:100% border:none text-align:center;"></td>	
-        </tr>
-	<tr>
-        <td>3.</td>
-        <td><input type="text" id="note_3" value="Before any comertial use, consult Senior/Licenced Engineer." readonly style="width:100% border:none text-align:center;"></td>	
-        </tr>
-	<tr>
-        <td>4.</td>
-        <td><input type="text" id="note_4" value=" " readonly style="width:100% border:none text-align:center;"></td>	
-        </tr>
-        <td>5.</td>
-        <td><input type="text" id="note_5" value=" " readonly style="width:100% border:none text-align:center;"></td>	
-        </tr>
-        <td>6.</td>
-        <td><input type="text" id="note_6" value=" " readonly style="width:100% border:none text-align:center;"></td>	
-        </tr>
-        <td>7.</td>
-        <td><input type="text" id="note_7" value=" " readonly style="width:100% border:none text-align:center;"></td>	
-        </tr>
+	        <tr>
+	        	<th style="align:left width:5%;">No.</th>
+	        	<th style="width:95%;">Comment</th>
+	        </tr>
+		<tr>
+		       	<td>1.</td>
+	       		<td><input type="text" id="note_1" value="Example calculation is only for educational purpose." readonly style="width:100% border:none text-align:center;"></td>	
+	        </tr>
+		<tr>
+	        	<td>2.</td>
+	        	<td><input type="text" id="note_2" value="The calculation presented herein is SEP calculation." readonly style="width:100% border:none text-align:center;"></td>	
+	        </tr>
+		<tr>
+	        	<td>3.</td>
+	       		<td><input type="text" id="note_3" value="Before any comertial use, consult Senior/Licenced Engineer." readonly style="width:100% border:none text-align:center;"></td>	
+	        </tr>
+		<tr>
+	        	<td>4.</td>
+	        	<td><input type="text" id="note_4" value=" " readonly style="width:100% border:none text-align:center;"></td>	
+	        </tr>
+	        	<td>5.</td>
+	        	<td><input type="text" id="note_5" value=" " readonly style="width:100% border:none text-align:center;"></td>	
+	        </tr>
+	       		<td>6.</td>
+	        	<td><input type="text" id="note_6" value=" " readonly style="width:100% border:none text-align:center;"></td>	
+	        </tr>
+	       		<td>7.</td>
+	        	<td><input type="text" id="note_7" value=" " readonly style="width:100% border:none text-align:center;"></td>	
+	        </tr>
 	</table>
 	
 	</div>
