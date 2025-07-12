@@ -12,7 +12,7 @@ function message_box(text) {
 
 function clear_values () {
     // clear load values
-    document.getElementById("job_description").value = ""; 
+    document.getElementById("job_description").value = "(enter the description here)"; 
     document.getElementById("q").value = "0.0";
     document.getElementById("rho").value = "0.0"; 
     document.getElementById("d_o").value = "0.0"; 
