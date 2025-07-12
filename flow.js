@@ -45,7 +45,7 @@ function flow_load_example () {
     // inform user
     alert('Example 1 succesfully loaded.');
 
-function flow_calculate () {
+function flow_calculate_values () {
     // get inlet values
     var  q = parseFloat(document.getElementById("q").value); 
     var  rho = parseFloat(document.getElementById("rho").value); 
