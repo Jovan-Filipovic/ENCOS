@@ -52,8 +52,10 @@ function calculate () {
     var  q = document.getElementById("q").value; 
     var  rho = document.getElementById("rho").value; 
     var  d_o = document.getElementById("d_o").value; 
-    var  e_n = document.getElementById("e_n").value; 
+    var  e_n = document.getElementById("e_n").value;
+
+    var d_i = d_o - 2*e_n;
         
     // test code
-    alert(rho);
+    alert(d_i);
 }
