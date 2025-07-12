@@ -24,6 +24,8 @@ function flow_clear_values () {
     document.getElementById("d_i").value = "0.0";
     document.getElementById("a_i").value = "0.0";
     document.getElementById("w").value = "0.0";
+    document.getElementById("r_e").value = "0.0";
+    document.getElementById("flow").value = "(none)";
     // clear notes
     document.getElementById("note_1").value = "";
     document.getElementById("note_2").value = "";
@@ -69,6 +71,15 @@ function flow_calculate_values () {
     document.getElementById("v").value = v;
     document.getElementById("w").value = w;
     document.getElementById("r_e").value = r_e;
+    //
+    if (Re < 2000) {
+        document.getElementById("flow").value = "laminar";
+    } else if (Re >= 2000 && Re <= 4000) {
+        document.getElementById("flow").value = "tranmsitional";
+    } else {
+        document.getElementById("flow").value = "turbulent";
+    }
+
     // inform user
     //alert('Calculation done.');
 }
