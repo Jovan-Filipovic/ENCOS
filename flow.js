@@ -55,7 +55,7 @@ function flow_calculate_values () {
     // calculate values
     let d_i = d_o - 2*e_n;
     let a_i = (d_i * d_i*Math.PI)/(4*1000000);
-    let v = (q / rho)*(1000/3600);
+    let v = q / (3.6*rho);
     let w = v / a_i;
     // write values
     document.getElementById("d_i").value = d_i;
