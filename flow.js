@@ -37,7 +37,7 @@ function flow_clear_values () {
 
 function flow_load_example () {
     //clear values
-    flow_clear_values()
+    flow_clear_values();
     // load input values 
     document.getElementById("job_description").value = "steamline piping"; 
     document.getElementById("q").value = "40.0";
