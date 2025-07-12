@@ -35,9 +35,9 @@ function clear_values () {
 }
 
 function load_example () {
-    clear
+    alert('load example button activated.');
 }
 
 function calculate () {
-
+    alert('calculate button activated.');
 }
